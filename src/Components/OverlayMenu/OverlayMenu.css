@@ -5,16 +5,16 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.98);
   /* display: none; */
 }
 
 .overlay-menu-content {
   position: relative;
-  top: 25%;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
+  display: flex;
 }
 
 .overlay-menu a {
@@ -23,4 +23,42 @@
   font-size: 36px;
   display: block;
   color: #818181;
+}
+
+.overlay-menu img {
+  width: 120px;
+  height: 120px;
+}
+
+.sub-menu {
+  padding: 20px;
+}
+
+.countries-menu {
+  border-right: solid white;
+  width: 50%;
+  max-width: 100%;
+}
+
+.flag-list-div {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: flex-start;
+  height: 500px;
+  overflow: scroll;
+}
+
+.individual-flag {
+  margin: 15px;
+}
+
+.categories-menu {
+  border-left: solid white;
+  width: 50%;
+
+}
+
+.menu-title {
+  color: white;
 }
