@@ -13,7 +13,8 @@ class OverlayMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showMenu: true,
+      showMenu: false,
+      showButton: false
     }
   }
 
@@ -28,15 +29,18 @@ class OverlayMenu extends Component {
   handleFlagClick(flag) {
     let url = 'https://newsapi.org/v2/top-headlines?country=' + flag +
               '&apiKey=77e9030d67f34b2e918af2623154e668';
+    console.log(url);
     // somehow pass this URL to ArticleList.js
   }
 
   render() {
     return (
       <div>
-        <button className="toggle-menu-btn" onClick={() => this.displayMenu(true)}>
+        {this.state.showButton ?
+          <button className="toggle-menu-btn" onClick={() => this.displayMenu(true)}>
           HEY
-        </button>
+        </button> : ''
+        }
         { this.state.showMenu ?
         <div className="overlay-menu">
           <a href="#" onClick={() => this.displayMenu(false)}>
@@ -47,7 +51,7 @@ class OverlayMenu extends Component {
               <h1 className="countries-menu-title menu-title">Countries</h1>
                 <div className="flag-list-div">
                   {flags.map((flag, index) =>
-                    <div className="individual-flag" onClick={() => this.handleFlagClick()}>
+                    <div className="individual-flag" onClick={() => this.handleFlagClick(flag)}>
                       <img alt="flag" src={this.getFlagImage(flag)} />
                     </div>
                   )}
