@@ -25,7 +25,7 @@ const Article = ({article}) => {
         {article.title}
       </h1>
       <p className="description">{article.description}</p>
-      <button class="show-more-button">MORE</button>
+      <button className="show-more-button">MORE</button>
       {article.content ?
         <p className="content">{truncateContent(article.content)}
           <MoreLink url={article.url} />

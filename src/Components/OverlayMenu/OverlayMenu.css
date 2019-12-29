@@ -1,0 +1,26 @@
+.overlay-menu {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  /* display: none; */
+}
+
+.overlay-menu-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.overlay-menu a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  display: block;
+  color: #818181;
+}
