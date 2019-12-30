@@ -18,12 +18,12 @@ class OverlayMenu extends Component {
     }
   }
 
-  getFlagImage(flag) {
-    return 'https://www.countryflags.io/' + flag + '/shiny/64.png';
-  }
-
   displayMenu(state) {
     this.setState({ showMenu: state });
+  }
+
+  getFlagImage(flag) {
+    return 'https://www.countryflags.io/' + flag + '/shiny/64.png';
   }
 
   handleFlagClick(flag) {

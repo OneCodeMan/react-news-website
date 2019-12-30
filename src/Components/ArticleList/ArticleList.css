@@ -5,3 +5,27 @@
   flex-wrap: wrap;
   margin: 0;
 }
+
+.flags-list-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.subcategory-list-div {
+  display: flex;
+  flex-wrap: left;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.subcategory-pill {
+  height: 30px;
+  margin: 5px;
+  font-size: 15px;
+  background: Transparent;
+  border-radius: 5px;
+  outline: none;
+}
