@@ -3,6 +3,11 @@ import Article from '../../Components/Article/Article';
 import './ArticleList.css';
 import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
+const EmptyView = () =>
+  <div>
+    <img src="https://cataas.com/cat/cute/says/WOAH%20SUCH%20EMPTY" alt="cat"/>
+  </div>
+
 const flags = [
   'ar', 'au', 'at', 'be', 'br', 'bg', 'ca', 'cn', 'co', 'cu', 'cz', 'eg', 'fr',
   'de', 'gr', 'hk', 'hu', 'in', 'id', 'ie', 'il', 'it', 'jp', 'lv', 'lt', 'my',
@@ -21,6 +26,7 @@ class ArticleList extends Component {
       error: null,
       isLoaded: false,
       articles: [],
+      query: ''
     };
   }
 
@@ -40,8 +46,15 @@ class ArticleList extends Component {
     this.getArticles(url);
   }
 
-  handleQuerySearch(query) {
+  handleQueryChange(e) {
+    this.setState({ query: e.target.value });
+  }
 
+  handleQuerySearch(query) {
+    let url = 'https://newsapi.org/v2/top-headlines?q=' + query +
+              '&apiKey=77e9030d67f34b2e918af2623154e668';
+    this.getArticles(url);
+    this.setState({ query: '' });
   }
 
   getArticles(url) {
@@ -83,6 +96,19 @@ class ArticleList extends Component {
     } else {
       return(
         <div>
+          <div className="search-wrap">
+            <div className="search-bar">
+              <input type="text"
+               className="search-input"
+               value={this.state.query}
+               onChange={this.handleQueryChange.bind(this)}
+              />
+            <button type="submit" className="search-button"
+              onClick={() => this.handleQuerySearch(this.state.query)}>
+                <i className="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
           <div className="flags-list-div">
             {flags.map((flag, index) =>
               <div key={index} className="individual-flag" onClick={() => this.handleFlagClick(flag)}>
@@ -98,12 +124,19 @@ class ArticleList extends Component {
               </div>
             )}
           </div>
-          <div className="article-list-div">
-            {articles.map((article, i) => (
-              article.author ?
-              <Article article={article} key={i}/> : null
-            ))}
-          </div>
+          {
+            articles.length === 1 ?
+            <h4>{articles.length} RESULT FOUND</h4> :
+            <h4>{articles.length} RESULTS FOUND</h4>
+          }
+          {
+            articles.length ? <div className="article-list-div">
+              {articles.map((article, i) => (
+                article.author ?
+                <Article article={article} key={i}/> : null
+              ))}
+            </div> : <EmptyView />
+          }
         </div>
       )
     }
