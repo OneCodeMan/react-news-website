@@ -103,8 +103,11 @@ class ArticleList extends Component {
                value={this.state.query}
                onChange={this.handleQueryChange.bind(this)}
               />
-            <button type="submit" className="search-button"
-              onClick={() => this.handleQuerySearch(this.state.query)}>
+            <button type="submit"
+                    className="search-button"
+                    onClick={() => this.handleQuerySearch(this.state.query)}
+                    disabled={!this.state.query}
+              >
                 <i className="fa fa-search"></i>
               </button>
             </div>

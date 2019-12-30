@@ -1,0 +1,19 @@
+footer {
+  /* background: #AED9E0; */
+  height: 50px;
+  margin-top: 50px;
+}
+
+p {
+  font-weight: bold;
+}
+
+.news-api-link {
+  text-decoration: none;
+  color: black;
+  font-weight: 300;
+}
+
+a:hover {
+  text-decoration: underline;
+}
