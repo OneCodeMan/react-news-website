@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Article from '../../Components/Article/Article';
 import './ArticleList.css';
+import LoadingSpinner from '../../Components/LoadingSpinner/LoadingSpinner';
 
 const flags = [
   'ar', 'au', 'at', 'be', 'br', 'bg', 'ca', 'cn', 'co', 'cu', 'cz', 'eg', 'fr',
@@ -44,7 +45,10 @@ class ArticleList extends Component {
   }
 
   getArticles(url) {
-    console.log('i am called with url: ', url);
+    this.setState({
+      isLoaded: false
+    });
+
     fetch(url)
     .then( response => response.json())
     .then(
@@ -71,12 +75,11 @@ class ArticleList extends Component {
 
   render() {
     const {error, isLoaded, articles} = this.state;
-    console.log(articles);
 
     if (error) {
       return <div>Error in Loading</div>
     } else if (!isLoaded) {
-      return <div>Loading...</div>
+      return <LoadingSpinner />
     } else {
       return(
         <div>
@@ -91,7 +94,7 @@ class ArticleList extends Component {
             {subCategories.map((subCategory, index) =>
               <div key={index} className="individual-subcategory"
                    onClick={() => this.handleSubCategoryClick(subCategory)}>
-                <button class="subcategory-pill">{subCategory}</button>
+                <button className="subcategory-pill">{subCategory}</button>
               </div>
             )}
           </div>

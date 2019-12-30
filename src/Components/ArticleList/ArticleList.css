@@ -14,6 +14,10 @@
   margin: 0 auto;
 }
 
+.individual-flag:hover {
+  transform: scaleX(1.3) scaleY(1.3);
+}
+
 .subcategory-list-div {
   display: flex;
   flex-wrap: left;
@@ -28,4 +32,10 @@
   background: Transparent;
   border-radius: 5px;
   outline: none;
+}
+
+.subcategory-pill:hover {
+  color: white;
+  font-weight: bold;
+  background-color: black;
 }
